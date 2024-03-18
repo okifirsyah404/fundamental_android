@@ -1,38 +1,28 @@
-package com.okifirsyah.fundamental_android
+package com.okifirsyah.fundamental_android.presentation.view
 
 import android.os.Bundle
 import android.view.Menu
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
-import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.navigation.NavigationView
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import coil.Coil
-import coil.load
-import coil.request.ImageRequest
-import com.bumptech.glide.Glide
-import com.google.android.material.navigation.NavigationView
-import com.google.android.material.snackbar.Snackbar
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.appcompat.app.AppCompatActivity
+import com.okifirsyah.fundamental_android.R
 import com.okifirsyah.fundamental_android.databinding.ActivityDrawerBinding
-import com.okifirsyah.fundamental_android.databinding.ActivityMainBinding
-import de.hdodenhof.circleimageview.CircleImageView
 
-class MainActivity : AppCompatActivity() {
+class DrawerActivity : AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityDrawerBinding
 
-    private lateinit var profileCircleImageView: CircleImageView
-    private var profileImageUrl = "https://lh3.googleusercontent.com/a/ACg8ocJiqPgSQm_oWs5NTlrOli2bmzQPF66YwE1Ehr1HikM2zQ=s288-c-no"
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityDrawerBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setSupportActionBar(binding.appBarDrawer.toolbar)
@@ -45,31 +35,16 @@ class MainActivity : AppCompatActivity() {
         val drawerLayout: DrawerLayout = binding.drawerLayout
         val navView: NavigationView = binding.navView
         val navController = findNavController(R.id.nav_host_fragment_content_drawer)
-
-        profileCircleImageView = navView.getHeaderView(0).findViewById(R.id.imageView)
-
-        profileCircleImageView.load(profileImageUrl)
-
-//        Glide.with(this)
-//            .load(profileImageUrl)
-//            .into(profileCircleImageView)
-
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow, R.id.nav_cart
+                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow
             ), drawerLayout
         )
-
-
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-
-
     }
-
-
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
