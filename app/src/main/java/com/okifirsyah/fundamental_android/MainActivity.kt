@@ -9,7 +9,7 @@ import com.okifirsyah.fundamental_android.presentation.view.MenuFragment
 
 class MainActivity : AppCompatActivity() {
 
-    private var _binding: ActivityMainBinding? = null;
+    private var _binding: ActivityMainBinding? = null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
